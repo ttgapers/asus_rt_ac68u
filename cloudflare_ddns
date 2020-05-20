@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CONFIG=$(dirname $0)/.cloudflare
+CONFIG=$(dirname $0)/cloudflare_config
 
 if [ -r $CONFIG ]; then
 	. $CONFIG

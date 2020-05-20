@@ -55,7 +55,7 @@ Save the configuration. Ensure you are able to SSH into your router using your r
 11. Review the log file for the result of the last execution. If you see a successful response, verify against the Cloudflare portal. Otherwise, review the errors and correct as necessary.
 > Note: You may get a throttled response if you have queried too quickly after Step 7. The script rate-limits to one query every 5 minutes. This is configurable in the `cloudflare_ddns` script or you can simply wait.
 12. Ensure rate-limiting is working as expected by re-issuing the command in Step 10 a couple of times in quick succession and verifying that the log file shows frequent invocations are throttled.
-13. If Steps 11 and 12 were successful, run `ln -s cloudflare_ddns ddns-start`. This creates a symbolic link with the name expected by the router firmware.
+13. If Steps 11 and 12 were successful, run `ln -s /jffs/addons/ddns/cloudflare/cloudflare_ddns /jffs/scripts/ddns-start`. This creates a symbolic link with the name expected by the router firmware.
 ##### Enable Custom DDNS
 In the router portal, under WAN -> DDNS,
 - Enable DDNS client: Yes
