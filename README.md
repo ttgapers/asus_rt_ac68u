@@ -15,6 +15,7 @@ Features include:
 - [@bengalih](https://github.com/bengalih) - Several contributions toward support for API Tokens, proxying, and other enhancements.
 - [@gumanov](https://github.com/gumanov) - Verified works on RT-AX88U
 - [@clayauld](https://github.com/clayauld) - Verified works on RT-AC87U
+- [@ttgapers](https://github.com/ttgapers)  - Verified works on RT-AC86U & RT-68U. Updated script to run from /jffs/addons/ddns/cloudflare/ directory.
 
 ## How to Configure
 
@@ -41,7 +42,7 @@ Save the configuration. Ensure you are able to SSH into your router using your r
 > Note: If SSH will be left enabled after installation, disallow password login, enable brute force protection, and use public keys for login to enhance security.
 
 ##### Install Cloudflare DDNS Script
-1. Log into your router via SSH, and navigate to `/jffs/scripts`.
+1. Log into your router via SSH, and navigate to `/jffs/addons/ddns/cloudflare`.
 2. Copy the `cloudflare_ddns` and `.cloudflare.example` files to that directory.
 3. Rename `.cloudflare.example` to `.cloudflare`.
 4. Edit `.cloudflare` with your [Cloudflare API token](https://blog.cloudflare.com/api-tokens-general-availability/) and zone ID from your Cloudflare portal. The script also supports the legacy "API Key plus account e-mail" method of authentication, but this method appears likely to be eliminated in future.
@@ -55,7 +56,8 @@ Save the configuration. Ensure you are able to SSH into your router using your r
 11. Review the log file for the result of the last execution. If you see a successful response, verify against the Cloudflare portal. Otherwise, review the errors and correct as necessary.
 > Note: You may get a throttled response if you have queried too quickly after Step 7. The script rate-limits to one query every 5 minutes. This is configurable in the `cloudflare_ddns` script or you can simply wait.
 12. Ensure rate-limiting is working as expected by re-issuing the command in Step 10 a couple of times in quick succession and verifying that the log file shows frequent invocations are throttled.
-13. If Steps 11 and 12 were successful, run `ln -s /jffs/addons/ddns/cloudflare/cloudflare_ddns /jffs/scripts/ddns-start`. This creates a symbolic link with the name expected by the router firmware.
+13. If there is an existing /jffs/scripts/ddns-start script rename to ddns-start.bak (rollback if changing DNS providers)
+14. If Steps 11 and 12 were successful, run `ln -s /jffs/addons/ddns/cloudflare/cloudflare_ddns /jffs/scripts/ddns-start`. This creates a symbolic link with the name expected by the router firmware.
 ##### Enable Custom DDNS
 In the router portal, under WAN -> DDNS,
 - Enable DDNS client: Yes
@@ -80,7 +82,7 @@ Nov 5 6:57 ddns: Completed custom ddns update
 > Note: If any errors occur, review the router log file and the script log file for an indication of the error or manually re-run `./cloudflare_ddns list` and `./cloudflare_ddns 1.1.1.1` to identify and troubleshoot.
 
 ##### Clean Up
-Once everything is configured and working properly, you may delete the `cloudflare_ddns.log` file from the `/jffs/scripts/` directory on the router. If SSH access is no longer needed, disable SSH on the router portal for security (especially if password authentication was used).
+Once everything is configured and working properly, you may delete the `cloudflare_ddns.log` file from the `/jffs/addons/ddns/cloudflare` directory on the router. If SSH access is no longer needed, disable SSH on the router portal for security (especially if password authentication was used).
 
 ## Script Removal
 To remove the script, the process is essentially reversed.
