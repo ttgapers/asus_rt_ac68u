@@ -15,7 +15,7 @@ Features include:
 - [@bengalih](https://github.com/bengalih) - Several contributions toward support for API Tokens, proxying, and other enhancements.
 - [@gumanov](https://github.com/gumanov) - Verified works on RT-AX88U
 - [@clayauld](https://github.com/clayauld) - Verified works on RT-AC87U
-- [@ttgapers](https://github.com/ttgapers)  - Verified works on RT-AC86U & RT-68U. Updated script to run from /jffs/addons/ddns/cloudflare/ directory.
+- [@ttgapers](https://github.com/ttgapers)  - Verified works on RT-AC86U & RT-AC68U. Updated script to run from /jffs/addons/ddns/cloudflare/ directory.
 
 ## How to Configure
 
