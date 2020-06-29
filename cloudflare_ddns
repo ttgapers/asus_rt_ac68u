@@ -20,7 +20,7 @@ if [ -n $CLOUDFLARE_API_TOKEN ]; then
 fi
 
 # user input IP address
-NEW_IP=$1
+NEW_IP=$(nvram get wan0_ipaddr)
 
 log_output()
 {
